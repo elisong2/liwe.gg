@@ -1,8 +1,12 @@
 backend/__pycache__/
-backend/user_data/
-backend/testbench.py
-backend/consts.py
+backend/lib/tempCodeRunnerFile.py
+backend/lib/testbench.py
+backend/lib/liwe.py
+backend/.env
 
+frontend/
+tslearn/
+temp.tsx
 .venv/
 junk/
 personal/

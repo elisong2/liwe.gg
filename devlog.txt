@@ -8,3 +8,17 @@ Each match is identified by an ID, and each ID can be processed to retrieve the 
 Optimized update() to reduce number of API requests. The match IDs are pulled in batches, and you can choose how many at a time you want to pull. I've created some logic to efficiently choose this number each time it runs based on the previous batch to optimize the number of calls.
 
 Added failsafes to update(). In the event an "ERROR XXX" occurs during an API call, it will cancel the update and revert back to the state before the update was ran, prompting the user to try again later.
+
+Setting up FastAPI to be the backend framework. Drafting initial get/post functions. Viewing a player's data should be a get, and update function should be a patch. New users should be a post.
+
+Fixed update function, can now record all games played under the user account. Most recent trial update recorded 530 games for an account with no interruption. Took a few minutes due to API limit.
+
+Fixed dataframe saving functions. Was accidentally recording each individual game instead of consolidating by champions. Fixed dataframe indexing issue.
+
+FastAPI backend is fully functional. Interfaces with update scripts as expected. Set up middleware to interface with frontend.
+
+Setting up Next.js frontend. Created search bar and nav bar components. Got the basic layout/routing up with a home page, about page, and player page. Main two things left are getting data to render dynamically on player page and style the site with Tailwind.
+
+Deciding to paginate client side to start. Will switch to server side if needed.
+
+Tidied up backend: Removed unnamed row/column in dataframes, sorted champ list alphabetically, rounded cspm to 2 decimals, and stopped directory creation if player doesn't exist.
