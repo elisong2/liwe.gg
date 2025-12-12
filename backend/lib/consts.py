@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 
 """API Key"""
+load_dotenv()
 API_KEY = os.getenv("RIOT_API_KEY") # in .env 
 
 """S15 Start: January 9th 2025 midnight, LA time"""
