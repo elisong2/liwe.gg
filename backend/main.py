@@ -10,7 +10,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # frontend origin
+    allow_origins=[
+        "http://localhost:3000" ,       # local dev frontend origin
+        "https://liwegg.vercel.app/"     # deployed frontend origin
+    ], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
