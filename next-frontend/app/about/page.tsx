@@ -8,9 +8,9 @@ export default function About() {
 
       <p>
         This site is intended to be a fun ongoing testbed for interesting stats
-        recorded by Riot's API. Some years ago, Riot used to do a season end
+        recorded by the Riot API. Some years ago, Riot used to do a season end
         review in the League client that showed various personal stats
-        throughout the season. I'm aiming to bring that back.
+        throughout the season. I am aiming to bring that back.
       </p>
     </>
   );
