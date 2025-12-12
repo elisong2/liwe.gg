@@ -19,8 +19,8 @@ function usePaginatedData<T>(data: T[], pageSize: number) {
 }
 
 export default function PlayerPage() {
+  const router = useRouter();
   const handleSearch = (query: string) => {
-    const router = useRouter();
     // 🟢 Step 1: User enters `Eli#NA1`
     const [ign, tag] = query.split("#");
 
