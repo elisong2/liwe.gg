@@ -130,6 +130,7 @@ export default function Home() {
       <Navbar></Navbar>
       <br />
       <h1 className="text-2xl font-bold mb-4">Welcome to lh.gg!</h1>
+      <p>enter american amig0#NA1 to test</p>
       <Searchbar onSearch={handleSearch}></Searchbar>
     </>
   );
