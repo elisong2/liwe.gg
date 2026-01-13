@@ -8,106 +8,110 @@ import traceback
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000" ,       # local dev frontend origin
-        "https://liwegg.vercel.app/"     # deployed frontend origin
-    ], 
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
-class StatsResponse(BaseModel):
-    prof:          List[Dict]
-    champ_agg:     List[Dict]
-    summs:         List[Dict]
-    match_history: List[Dict]
-    overall_agg:   List[Dict]
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=[
+#         "http://localhost:3000" ,       # local dev frontend origin
+#         "https://liwegg.vercel.app/"     # deployed frontend origin
+#     ], 
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
-@app.get("/")  
-def root():
-    return {"Thanks for using liwe.gg!"}
+# class StatsResponse(BaseModel):
+#     prof:          List[Dict]
+#     champ_agg:     List[Dict]
+#     summs:         List[Dict]
+#     match_history: List[Dict]
+#     overall_agg:   List[Dict]
 
-# view
-@app.get("/player/{ign}-{tag}", response_model=StatsResponse)
-def view(ign: str, tag: str) :
-    try:
-        me = user(ign, "#"+tag)
-        prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
+# @app.get("/")  
+# def root():
+#     return {"Thanks for using liwe.gg!"}
 
-        prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
+# # view
+# @app.get("/player/{ign}-{tag}", response_model=StatsResponse)
+# def view(ign: str, tag: str) :
+#     try:
+#         me = user(ign, "#"+tag)
+#         prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
 
-        return {
-            'prof': prof_df.to_dict(orient="records"),
-            'champ_agg': champ_df.to_dict(orient="records"),
-            'summs': ss_df.to_dict(orient="records"),
-            'match_history': gen_df.to_dict(orient="records"),
-            'overall_agg': overall_df.to_dict(orient="records")
-        }
+#         prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
 
-    except Exception as e:
-        print(traceback.format_exc())  # log error server-side
-        raise HTTPException(status_code=500, detail=str(e))
+#         return {
+#             'prof': prof_df.to_dict(orient="records"),
+#             'champ_agg': champ_df.to_dict(orient="records"),
+#             'summs': ss_df.to_dict(orient="records"),
+#             'match_history': gen_df.to_dict(orient="records"),
+#             'overall_agg': overall_df.to_dict(orient="records")
+#         }
 
-# # new player
-@app.post("/player/{ign}-{tag}", response_model=StatsResponse)
-def create(ign: str, tag: str):
-    try:
-        me = user(ign, "#"+tag)
-        me.update()
-        prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
+#     except Exception as e:
+#         print(traceback.format_exc())  # log error server-side
+#         raise HTTPException(status_code=500, detail=str(e))
+
+# # # new player
+# @app.post("/player/{ign}-{tag}", response_model=StatsResponse)
+# def create(ign: str, tag: str):
+#     try:
+#         me = user(ign, "#"+tag)
+#         me.update()
+#         prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
         
 
-        prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
 
-        return {
-            'prof': prof_df.to_dict(orient="records"),
-            'champ_agg': champ_df.to_dict(orient="records"),
-            'summs': ss_df.to_dict(orient="records"),
-            'match_history': gen_df.to_dict(orient="records"),
-            'overall_agg': overall_df.to_dict(orient="records")
-        }
+#         return {
+#             'prof': prof_df.to_dict(orient="records"),
+#             'champ_agg': champ_df.to_dict(orient="records"),
+#             'summs': ss_df.to_dict(orient="records"),
+#             'match_history': gen_df.to_dict(orient="records"),
+#             'overall_agg': overall_df.to_dict(orient="records")
+#         }
 
-    except Exception as e:
-        print(traceback.format_exc())  # log error server-side
-        raise HTTPException(status_code=500, detail=str(e))
+#     except Exception as e:
+#         print(traceback.format_exc())  # log error server-side
+#         raise HTTPException(status_code=500, detail=str(e))
 
-# # updating player
-@app.patch("/player/{ign}-{tag}", response_model=StatsResponse)
-def update(ign: str, tag: str):
-    try:
-        me = user(ign, "#"+tag)
-        me.update()
-        prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
+# # # updating player
+# @app.patch("/player/{ign}-{tag}", response_model=StatsResponse)
+# def update(ign: str, tag: str):
+#     try:
+#         me = user(ign, "#"+tag)
+#         me.update()
+#         prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
         
 
-        prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
+#         overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
 
-        return {
-            'prof': prof_df.to_dict(orient="records"),
-            'champ_agg': champ_df.to_dict(orient="records"),
-            'summs': ss_df.to_dict(orient="records"),
-            'match_history': gen_df.to_dict(orient="records"),
-            'overall_agg': overall_df.to_dict(orient="records")
-        }
+#         return {
+#             'prof': prof_df.to_dict(orient="records"),
+#             'champ_agg': champ_df.to_dict(orient="records"),
+#             'summs': ss_df.to_dict(orient="records"),
+#             'match_history': gen_df.to_dict(orient="records"),
+#             'overall_agg': overall_df.to_dict(orient="records")
+#         }
 
-    except Exception as e:
-        print(traceback.format_exc())  # log error server-side
-        raise HTTPException(status_code=500, detail=str(e))
+#     except Exception as e:
+#         print(traceback.format_exc())  # log error server-side
+#         raise HTTPException(status_code=500, detail=str(e))
     
 # def build_response(me):
 #     prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
