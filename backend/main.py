@@ -2,7 +2,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 # from lib.liwe import liwe
-from lib.user import *
+
+# from lib.user import *
 from typing import List, Dict
 import traceback
 
