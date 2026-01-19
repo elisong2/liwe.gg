@@ -126,10 +126,10 @@ export default function Home() {
     <>
       {/* <Navbar></Navbar> */}
       <br />
-      <h1 className="text-2xl font-bold mb-4 flex flex-col items-center mt-25">
+      <h1 className="text-2xl font-bold mb-4 flex flex-col items-center mt-50">
         Welcome to liwe.gg!
       </h1>
-      <div className="min-h-screen flex flex-col items-center justify-center -mt-75">
+      <div className="min-h-screen flex flex-col items-center justify-center -mt-65">
         <p>enter mingoose9#NA1 to test</p>
         <Searchbar onSearch={handleSearch}></Searchbar>
       </div>
