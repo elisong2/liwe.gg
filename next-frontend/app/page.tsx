@@ -111,7 +111,6 @@ export default function Home() {
   const router = useRouter();
 
   const handleSearch = (query: string) => {
-    // 🟢 Step 1: User enters `Eli#NA1`
     const [ign, tag] = query.split("#");
 
     if (!tag) {
@@ -119,19 +118,21 @@ export default function Home() {
       return;
     }
 
-    // 🟢 Step 2: Convert to hyphen format `Eli-NA1`
     const encoded = `${encodeURIComponent(ign)}-${encodeURIComponent(tag)}`;
 
-    // 🟢 Step 3: Push dynamic route → /player/Eli-NA1
     router.push(`/player/${encoded}`);
   };
   return (
     <>
       <Navbar></Navbar>
       <br />
-      <h1 className="text-2xl font-bold mb-4">Welcome to lh.gg!</h1>
-      <p>enter mingoose9#NA1 to test</p>
-      <Searchbar onSearch={handleSearch}></Searchbar>
+      <h1 className="text-2xl font-bold mb-4 flex flex-col items-center">
+        Welcome to lh.gg!
+      </h1>
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <p>enter mingoose9#NA1 to test</p>
+        <Searchbar onSearch={handleSearch}></Searchbar>
+      </div>
     </>
   );
 }
