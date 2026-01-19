@@ -124,7 +124,7 @@ export default function Home() {
   };
   return (
     <>
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <br />
       <h1 className="text-2xl font-bold mb-4 flex flex-col items-center">
         Welcome to lh.gg!
