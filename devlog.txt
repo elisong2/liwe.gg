@@ -22,3 +22,5 @@ Setting up Next.js frontend. Created search bar and nav bar components. Got the 
 Deciding to paginate client side to start. Will switch to server side if needed.
 
 Tidied up backend: Removed unnamed row/column in dataframes, sorted champ list alphabetically, rounded cspm to 2 decimals, and stopped directory creation if player doesn't exist.
+
+Currently working on UI.    
