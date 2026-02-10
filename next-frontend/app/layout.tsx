@@ -15,6 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "liwe.gg",
   description: "Learn more about your personal League stats!",
+  openGraph: {
+    title: "liwe.gg Home Page",
+    description: "Your own League Stats!",
+    url: "https://liwegg.vercel.app/",
+    siteName: "liwe.gg",
+    locale: "en-US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
