@@ -4,6 +4,7 @@
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { Searchbar } from "@/components/Search";
+import Link from "next/dist/client/link";
 
 // export default function Home() {
 //   return (
@@ -124,14 +125,22 @@ export default function Home() {
   };
   return (
     <>
-      {/* <Navbar></Navbar> */}
-      <br />
-      <h1 className="text-2xl font-bold mb-4 flex flex-col items-center mt-50">
-        Welcome to liwe.gg!
+      <h1 className="mt-25 mb-5 text-center text-6xl font-bold p-5">
+        <Link href="/" target="_self" className="border-5 rounded-3xl p-4">
+          liwe.gg
+        </Link>
       </h1>
-      <div className="min-h-screen flex flex-col items-center justify-center -mt-125">
-        <p>enter mingoose9#NA1 to test</p>
-        <Searchbar onSearch={handleSearch}></Searchbar>
+      <p className="text-center pt-5 font-italic">
+        League stats you didn't know about yourself!
+      </p>
+      <div>
+        <div className="mt-15 justify-center items-center flex flex-col ">
+          <Searchbar onSearch={handleSearch}></Searchbar>
+        </div>
+
+        <p className="text-center text-sm bottom-10 absolute w-full">
+          made with FastAPI + Next.js
+        </p>
       </div>
     </>
   );
