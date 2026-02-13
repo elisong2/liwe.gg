@@ -55,7 +55,7 @@ export function Searchbar({ onSearch }: SearchProps) {
           <InputGroupInput
             type="text"
             id="inline-start-input"
-            placeholder="OPMAGEMASTER#NA1"
+            placeholder="mingoose9#NA1"
             value={value} // state
             onChange={handleChange} // updates as you type
             onKeyDown={handleKeyDown} // hit enter to search

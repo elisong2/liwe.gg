@@ -6,6 +6,25 @@ import Navbar from "@/components/Navbar";
 import { Searchbar } from "@/components/Search";
 import Link from "next/dist/client/link";
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 // export default function Home() {
 //   return (
 //     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
@@ -133,15 +152,14 @@ export default function Home() {
       <p className="text-center pt-5 font-italic">
         League stats you didn't know about yourself!
       </p>
-      <div>
-        <div className="mt-15 justify-center items-center flex flex-col ">
-          <Searchbar onSearch={handleSearch}></Searchbar>
-        </div>
 
-        <p className="text-center text-sm bottom-10 absolute w-full">
-          made with FastAPI + Next.js
-        </p>
+      <div className="mt-15 justify-center items-center flex flex-col ">
+        <Searchbar onSearch={handleSearch}></Searchbar>
       </div>
+
+      <p className="text-center text-sm bottom-10 absolute w-full">
+        made with FastAPI + Next.js
+      </p>
     </>
   );
 }
