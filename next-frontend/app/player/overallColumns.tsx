@@ -2,18 +2,18 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-export type Summs = {
-  Spell: string;
-  Casts: number;
+export type Overall = {
+  Stat: string;
+  Value: number;
 };
 
-export const columns: ColumnDef<Summs>[] = [
+export const overallColumns: ColumnDef<Overall>[] = [
   {
-    accessorKey: "Spell",
-    header: "Spell",
+    accessorKey: "stat",
+    header: "Stat",
   },
   {
-    accessorKey: "Uses",
-    header: "Casts",
+    accessorKey: "value",
+    header: "Value",
   },
 ];

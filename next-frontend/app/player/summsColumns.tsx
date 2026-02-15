@@ -7,7 +7,7 @@ export type Summs = {
   Count: number;
 };
 
-export const columns: ColumnDef<Summs>[] = [
+export const summsColumns: ColumnDef<Summs>[] = [
   {
     accessorKey: "Spell",
     header: "Spell",

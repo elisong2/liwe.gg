@@ -8,7 +8,8 @@ import Navbar from "@/components/Navbar";
 import { Searchbar } from "@/components/Search";
 import { useRouter } from "next/navigation";
 import { DataTable } from "@/components/data-table";
-import { columns, Summs } from "../summsColumns";
+import { summsColumns, Summs } from "../summsColumns";
+import { overallColumns, Overall } from "../overallColumns";
 import Link from "next/dist/client/link";
 
 import {
@@ -29,6 +30,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 //
 export default function PlayerPage() {
@@ -52,6 +54,7 @@ export default function PlayerPage() {
   const [loading, setLoading] = useState(false);
   const { ign_tag } = useParams<{ ign_tag: string }>();
   const [data, setData] = useState<any | null>(null);
+  const [reshapeData, setReshapeData] = useState<any | null>(null);
 
   useEffect(() => {
     if (!ign_tag) return;
@@ -65,9 +68,21 @@ export default function PlayerPage() {
         console.log("Backend JSON:", json);
         console.log("Summoners: ", json.summs);
         console.log("sum 1: ", json.summs[0]);
+        console.log("ovearll: ", json.overall_agg);
+        console.log("ovearll: ", json.overall_agg[0]);
         // console.log("name: ", json.summs[0].Spell);
-        setData(json);
+
         // console.log("bruh ", data.summs);
+        setData(json);
+
+        const transformed = Object.entries(json.overall_agg[0]).map(
+          ([key, value]) => ({
+            stat: key,
+            value: value,
+          }),
+        );
+        setReshapeData(transformed);
+        // console.log("reshaped: ", transformed);
       })
       .catch((err) => console.error(err));
   }, [ign_tag]);
@@ -109,21 +124,33 @@ export default function PlayerPage() {
       <div className="mt-15 justify-center items-center flex flex-col ">
         <Searchbar onSearch={handleSearch}></Searchbar>
       </div>
-      <button
-        onClick={handleUpdate}
-        disabled={loading}
-        className="px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        {loading ? "Updating..." : "Update"}
-      </button>
-      <div className="p-6">
-        {/* Profile info */}
-        {data.prof?.[0] && (
-          <div className="mb-6 border-b pb-4">
-            <h2 className="text-xl font-bold">{data.prof[0].Summoner}</h2>
-            <p>Games Played: {data.prof[0]["Games Played"]}</p>
-          </div>
-        )}
+
+      <div className="flex justify-center items-center gap-3">
+        <div className="pt-14">
+          {/* Profile info */}
+          {data.prof?.[0] && (
+            <div className="mb-5 pb-4">
+              <h2 className="text-xl font-bold">{data.prof[0].Summoner}</h2>
+              {/* <p>Games Played: {data.prof[0]["Games Played"]}</p> */}
+            </div>
+          )}
+        </div>
+        {/* <button
+          onClick={handleUpdate}
+          disabled={loading}
+          className="px-2 py-2 mt-5 bg-blue-500 text-white rounded"
+        >
+          {loading ? "Updating..." : "Update"}
+        </button> */}
+
+        <Button
+          variant="outline"
+          onClick={handleUpdate}
+          disabled={loading}
+          className="px-2 py-2 mt-5"
+        >
+          {loading ? "Updating..." : "Update"}
+        </Button>
       </div>
 
       <div className="justify-center items-center flex mt-10">
@@ -131,19 +158,18 @@ export default function PlayerPage() {
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="summs">Summs</TabsTrigger>
-            <TabsTrigger value="reports">Champs</TabsTrigger>
+            <TabsTrigger value="overall">Overall</TabsTrigger>
           </TabsList>
           <TabsContent value="overview">
             <Card>
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
                 <CardDescription>
-                  View your key metrics and recent project activity. Track
-                  progress across all your active projects.
+                  Currently redoing the UI. Updates coming!
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-muted-foreground text-sm">
-                You have 12 active projects and 3 pending tasks.
+                placeholder
               </CardContent>
             </Card>
           </TabsContent>
@@ -154,16 +180,33 @@ export default function PlayerPage() {
                 <CardDescription></CardDescription>
               </CardHeader>
               <CardContent className="text-muted-foreground text-sm">
-                <DataTable columns={columns} data={data.summs as Summs[]} />
+                <DataTable
+                  columns={summsColumns}
+                  data={data.summs as Summs[]}
+                />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="overall">
+            <Card>
+              <CardHeader>
+                <CardTitle></CardTitle>
+                <CardDescription></CardDescription>
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm">
+                <DataTable
+                  columns={overallColumns}
+                  data={reshapeData as Overall[]}
+                />
               </CardContent>
             </Card>
           </TabsContent>
         </Tabs>
       </div>
 
-      <p className="text-center text-sm bottom-10 absolute w-full">
+      {/* <p className="text-center text-sm bottom-10 absolute w-full">
         made with FastAPI + Next.js
-      </p>
+      </p> */}
     </>
   );
 }
