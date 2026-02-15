@@ -6,6 +6,14 @@ import React from "react";
 
 import { useState } from "react";
 
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { SearchIcon } from "lucide-react";
+
 // ① Define props type: we expect the parent to give us ONE thing:
 //    a function called onSearch that accepts a string and returns nothing.
 type SearchProps = {
@@ -41,13 +49,23 @@ export function Searchbar({ onSearch }: SearchProps) {
 
   // ⑦ What this component shows when rendered
   return (
-    <input
-      type="text"
-      placeholder="Enter summoner#tag" // <-- hint for the user
-      value={value} // <-- always reflect state
-      onChange={handleChange} // <-- updates `value` on typing
-      onKeyDown={handleKeyDown} // <-- checks for Enter
-    />
+    <>
+      <Field className="max-w-sm">
+        <InputGroup>
+          <InputGroupInput
+            type="text"
+            id="inline-start-input"
+            placeholder="mingoose9#NA1"
+            value={value} // state
+            onChange={handleChange} // updates as you type
+            onKeyDown={handleKeyDown} // hit enter to search
+          />
+          <InputGroupAddon align="inline-end">
+            <SearchIcon className="text-muted-foreground" />
+          </InputGroupAddon>
+        </InputGroup>
+      </Field>
+    </>
   );
 }
 
