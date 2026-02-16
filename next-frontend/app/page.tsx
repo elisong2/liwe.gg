@@ -152,6 +152,10 @@ export default function Home() {
       <p className="text-center pt-5 font-italic">
         League stats you didn't know about yourself!
       </p>
+      <br />
+      <p className="text-center pt-5 font-italic">
+        *API currently does not track Mayhem games
+      </p>
 
       <div className="mt-15 justify-center items-center flex flex-col ">
         <Searchbar onSearch={handleSearch}></Searchbar>
