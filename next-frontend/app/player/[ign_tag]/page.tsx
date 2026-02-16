@@ -60,8 +60,8 @@ export default function PlayerPage() {
     if (!ign_tag) return;
 
     // fetch(`http://127.0.0.1:8000/player/${ign_tag}`)
-    fetch(`https://liwegg-production.up.railway.app/player/${ign_tag}`)
-      // fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}player/${ign_tag}`)
+    // fetch(`https://liwegg-production.up.railway.app/player/${ign_tag}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/player/${ign_tag}`)
       .then((res) => {
         if (!res.ok) throw new Error(`Backend error: ${res.status}`);
         return res.json();
