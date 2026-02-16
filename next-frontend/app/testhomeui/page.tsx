@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function testui() {
+export default function Testui() {
   const router = useRouter();
 
   const handleSearch = (query: string) => {
