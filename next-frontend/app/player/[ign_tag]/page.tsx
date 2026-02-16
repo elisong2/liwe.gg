@@ -36,7 +36,7 @@ import { Button } from "@/components/ui/button";
 export default function PlayerPage() {
   const router = useRouter();
   const handleSearch = (query: string) => {
-    // 🟢 Step 1: User enters `Eli#NA1`
+    // user enters `Eli#NA1`
     const [ign, tag] = query.split("#");
 
     if (!tag) {
@@ -44,10 +44,10 @@ export default function PlayerPage() {
       return;
     }
 
-    // 🟢 Step 2: Convert to hyphen format `Eli-NA1`
+    // convert to hyphen format `Eli-NA1`
     const encoded = `${encodeURIComponent(ign)}-${encodeURIComponent(tag)}`;
 
-    // 🟢 Step 3: Push dynamic route → /player/Eli-NA1
+    // push dynamic route → /player/Eli-NA1
     router.push(`/player/${encoded}`);
   };
 
@@ -59,7 +59,8 @@ export default function PlayerPage() {
   useEffect(() => {
     if (!ign_tag) return;
 
-    fetch(`http://127.0.0.1:8000/player/${ign_tag}`)
+    // fetch(`http://127.0.0.1:8000/player/${ign_tag}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/player/${ign_tag}`)
       .then((res) => {
         if (!res.ok) throw new Error(`Backend error: ${res.status}`);
         return res.json();
@@ -104,9 +105,9 @@ export default function PlayerPage() {
   };
   // console.log("HI THERE bro");
   // console.log("Fetched player data:", data);
-  // ✅ Always call hooks, even if data is not yet loaded
+  // call hooks, even if data is not yet loaded
 
-  // ✅ Only conditional logic here — after hooks are declared
+  // only conditional logic here — after hooks are declared
   if (!data) return <div>Loading...</div>;
   // console.log("Fetched player data:", data);
 
