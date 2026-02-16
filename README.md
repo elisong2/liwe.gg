@@ -3,3 +3,5 @@ This is a data processing project using Riot Games' public API endpoints to anal
 TO DO:
 UI refresh  
 data pipeline refit for 2026
+
+visit liwegg.vercel.app
