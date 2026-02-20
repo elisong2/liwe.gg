@@ -32,7 +32,7 @@ class user:
         prof_data = {
             "Summoner": [self.ign + self.tag],     # To store event or action timestamps
             "PUUID": [temp],
-            "Last updated": [s15_start],
+            "Last updated": [s16_start],
             "Games Played": [0],
             "Updated": [False]           
         }
@@ -143,7 +143,7 @@ class user:
                 if time <= last_updated:
                     
                     break
-                elif time > last_updated and version == curr_season:
+                elif time > last_updated and version == season_16:
                     counter += 1
                     total_counter += 1
                     if recent_flag == False:

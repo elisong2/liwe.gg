@@ -77,7 +77,7 @@ export default function PlayerPage() {
         // console.log("bruh ", data.summs);
         setData(json);
 
-        const transformed = Object.entries(json.overall_agg[0]).map(
+        const transformed = Object?.entries(json.overall_agg[0]).map(
           ([key, value]) => ({
             stat: key,
             value: value,
@@ -92,9 +92,12 @@ export default function PlayerPage() {
   const handleUpdate = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/player/${ign_tag}`, {
-        method: "PATCH",
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/player/${ign_tag}`,
+        {
+          method: "PATCH",
+        },
+      );
       if (!res.ok) throw new Error(`Backend error: ${res.status}`);
       const json = await res.json();
       setData(json); // update frontend state with fresh backend data

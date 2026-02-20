@@ -9,6 +9,8 @@ API_KEY = os.getenv("RIOT_API_KEY") # in .env
 jan9_start = 1736409600
 s15_start = 1736452800
 curr_season = 15
+season_16 = 16
+s16_start = 1736323200
 
 """Account PUUIDs"""
 OPMAGE_PUUID    = "MghYJizn45WaJRnByqkNLzNdHBs_E3dpwS2NqC0-T77vpuDZj2Adz5VqXG8Q3JIK718qeY5r5mMvZw"
