@@ -208,8 +208,8 @@ class user:
         totalHealsOnTeammates = int(my_game_data["totalHealsOnTeammates"])
         totalDamageTaken = int(my_game_data["totalDamageTaken"])
         cs = int(my_game_data["neutralMinionsKilled"]) + int(my_game_data["totalMinionsKilled"])
-        cspm = cs / (int(my_game_data["timePlayed"]) / 60)  # FIXED
-        cspm = round(cspm, 1)
+        # cspm = cs / (int(my_game_data["timePlayed"]) / 60)  # FIXED
+        # cspm = round(cspm, 1)
 
         if "Champion" in df.columns and champ_name in df["Champion"].values:
             df.loc[df["Champion"] == champ_name, "Q"] += q
@@ -242,9 +242,9 @@ class user:
             df.loc[df["Champion"] == champ_name, "Total Damage Taken"] += totalDamageTaken
             df.loc[df["Champion"] == champ_name, "CS"] += cs
             
-            curr_val = df.loc[df["Champion"] == champ_name, "CS/M"].iloc[0]
-            new_val = max(curr_val, cspm)
-            df.loc[df["Champion"] == champ_name, "CS/M"] = new_val
+            # curr_val = df.loc[df["Champion"] == champ_name, "CS/M"].iloc[0]
+            # new_val = max(curr_val, cspm)
+            # df.loc[df["Champion"] == champ_name, "CS/M"] = new_val
             
             if win:
                 df.loc[df["Champion"] == champ_name, "Wins"] += 1
@@ -276,7 +276,7 @@ class user:
                 "Total Heals on Teammates": totalHealsOnTeammates,
                 "Total Damage Taken": totalDamageTaken,
                 "CS": cs,
-                "CS/M": cspm,
+                # "CS/M": cspm,
 
                 "Wins": 1 if win else 0,
                 "Losses": 0 if win else 1
@@ -313,8 +313,8 @@ class user:
         totalHealsOnTeammates = int(my_game_data["totalHealsOnTeammates"])
         totalDamageTaken = int(my_game_data["totalDamageTaken"])
         cs = int(my_game_data["neutralMinionsKilled"]) + int(my_game_data["totalMinionsKilled"])
-        cspm = cs / (int(my_game_data["timePlayed"]) / 60)  # FIXED
-        cspm = round(cspm, 1)
+        # cspm = cs / (int(my_game_data["timePlayed"]) / 60)  # FIXED
+        # cspm = round(cspm, 1)
 
         ss1_name = ss_picker(my_game_data["summoner1Id"])
         ss1_casts = int(my_game_data["summoner1Casts"])
@@ -345,7 +345,7 @@ class user:
             "Total Heals on Teammates": totalHealsOnTeammates,
             "Total Damage Taken": totalDamageTaken,
             "CS": cs,
-            "CS/M": cspm,
+            # "CS/M": cspm,
 
             "Win": "Yes" if win else "No",
             
@@ -382,8 +382,8 @@ class user:
         totalHealsOnTeammates = int(my_game_data["totalHealsOnTeammates"])
         totalDamageTaken = int(my_game_data["totalDamageTaken"])
         cs = int(my_game_data["neutralMinionsKilled"]) + int(my_game_data["totalMinionsKilled"])
-        cspm = cs / (int(my_game_data["timePlayed"]) / 60)  # FIXED
-        cspm = round(cspm, 2)
+        # cspm = cs / (int(my_game_data["timePlayed"]) / 60)  # FIXED
+        # cspm = round(cspm, 2)
 
         if not df.empty:
             df.loc[0, "Q"] += q
@@ -408,7 +408,7 @@ class user:
             df.loc[0, "Total Heals on Teammates"] += totalHealsOnTeammates
             df.loc[0, "Total Damage Taken"] += totalDamageTaken
             df.loc[0, "CS"] += cs
-            df.loc[0, "CS/M"] += max(df.loc[0, "CS/M"], cspm)
+            # df.loc[0, "CS/M"] += max(df.loc[0, "CS/M"], cspm)
 
             if win:
                 df.loc[0, "Wins"] += 1
@@ -427,7 +427,8 @@ class user:
                 "Total Damage Shielded on Teammates": totalDamageShieldedOnTeammates,
                 "Total Heals on Teammates": totalHealsOnTeammates,
                 "Total Damage Taken": totalDamageTaken,
-                "CS": cs, "CS/M": cspm,
+                "CS": cs, 
+                # "CS/M": cspm,
                 "Wins": 1 if win else 0,
                 "Losses": 0 if win else 1
             }])
