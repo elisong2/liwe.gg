@@ -113,7 +113,10 @@ export default function PlayerPage() {
   // call hooks, even if data is not yet loaded
 
   // only conditional logic here — after hooks are declared
-  if (!data) return <div>Loading...</div>;
+  if (!data)
+    return (
+      <div className="grid min-h-screen place-items-center">Loading...</div>
+    );
   // console.log("Fetched player data:", data);
 
   return (
