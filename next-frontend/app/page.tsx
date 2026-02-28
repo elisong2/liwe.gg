@@ -156,8 +156,9 @@ export default function Home() {
       <p className="text-center pt-5 font-italic">
         *API currently does not track Mayhem games
       </p>
-      <p className="text-center pt-5 font-italic">
-        *Currently going major UI changes. Come back soon!
+      <p className="text-center font-italic">
+        *Currently undergoing major UI changes and feature additions. Come back
+        soon!
       </p>
 
       <div className="mt-15 justify-center items-center flex flex-col ">

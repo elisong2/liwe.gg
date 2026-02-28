@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { DataTable } from "@/components/data-table";
 import { summsColumns, Summs } from "../summsColumns";
 import { overallColumns, Overall } from "../overallColumns";
+import { champsColumns, Champs } from "../champColumns";
 import Link from "next/dist/client/link";
 
 import {
@@ -68,10 +69,10 @@ export default function PlayerPage() {
       })
       .then((json) => {
         console.log("Backend JSON:", json);
-        console.log("Summoners: ", json.summs);
-        console.log("sum 1: ", json.summs[0]);
+        // console.log("Summoners: ", json.summs);
+        // console.log("sum 1: ", json.summs[0]);
         console.log("ovearll: ", json.overall_agg);
-        console.log("ovearll: ", json.overall_agg[0]);
+        // console.log("ovearll: ", json.overall_agg[0]);
         // console.log("name: ", json.summs[0].Spell);
 
         // console.log("bruh ", data.summs);
@@ -159,11 +160,12 @@ export default function PlayerPage() {
       </div>
 
       <div className="justify-center items-center flex mt-10">
-        <Tabs defaultValue="overview" className="w-[400px]">
+        <Tabs defaultValue="overall" className="w-[400px]">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="summs">Summs</TabsTrigger>
+            {/* <TabsTrigger value="overview">Overview</TabsTrigger> */}
             <TabsTrigger value="overall">Overall</TabsTrigger>
+            <TabsTrigger value="champs">Champs</TabsTrigger>
+            <TabsTrigger value="summs">Summs</TabsTrigger>
           </TabsList>
           <TabsContent value="overview">
             <Card>
@@ -192,6 +194,22 @@ export default function PlayerPage() {
               </CardContent>
             </Card>
           </TabsContent>
+
+          <TabsContent value="champs">
+            <Card>
+              <CardHeader>
+                <CardTitle></CardTitle>
+                <CardDescription></CardDescription>
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm">
+                <DataTable
+                  columns={champsColumns}
+                  data={data.champ_agg as Champs[]}
+                />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
           <TabsContent value="overall">
             <Card>
               <CardHeader>
