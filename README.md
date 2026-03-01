@@ -1,19 +1,25 @@
 Hello! This is liwe.gg, a full stack League of Legends stats platform built using Riot Games' API.
 
-Overview:
 Years ago, the game client used to give fun statistics such as number of spellcasts, damage dealt, champs played, etc, at the end of each season. The goal is to not only bring that back, but also on a service that can be checked throughout the year. This is an ongoing project, so more features are to come!
 
 Demo:
-visit liwegg.vercel.app
-search 'OPMAGEMASTER#NA1' or your own account!
 
-Frontend: Typescript, Next.js, React, Tailwind, Vercel
-Backend: Python, FastAPI, Supabase/Postgres, Railway
-Other: Riot Games Developer API
+- visit liwegg.vercel.app
+- search 'OPMAGEMASTER#NA1' or your own account!
+
+Frontend:
+
+- Typescript, Next.js, React, Tailwind, Vercel
+
+Backend:
+
+- Python, FastAPI, Supabase/Postgres, Railway
+  Other:
+- Riot Games Developer API
 
 Notes:
 
-- Initially used local file indexing for simplicity but migrated to Supabase for storage on deployment
+- Initially used local file storage for simplicity but migrated to Supabase for scalability on deployment
 
 Limitations:
 
