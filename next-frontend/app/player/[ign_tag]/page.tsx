@@ -126,9 +126,9 @@ export default function PlayerPage() {
           liwe.gg
         </Link>
       </h1>
-      <p className="text-center pt-5 font-italic">
-        League stats you didn't know about yourself!
-      </p>
+      {/* <p className="text-center pt-5 font-italic">
+        *currently does not track Mayhem
+      </p> */}
 
       <div className="mt-15 justify-center items-center flex flex-col ">
         <Searchbar onSearch={handleSearch}></Searchbar>
@@ -144,6 +144,7 @@ export default function PlayerPage() {
             </div>
           )}
         </div>
+
         {/* <button
           onClick={handleUpdate}
           disabled={loading}
@@ -162,7 +163,14 @@ export default function PlayerPage() {
         </Button>
       </div>
 
-      <div className="justify-center items-center flex mt-10">
+      <p className="text-center text-sm font-italic">
+        ⚠️For first time/infrequent visitors, 'Update' may take some time
+      </p>
+      <p className="text-center text-sm pt-0 font-italic">
+        ⚠️Mayhem is currently untracked
+      </p>
+
+      <div className="justify-center items-center flex mt-5">
         <Tabs defaultValue="overall" className="w-[400px]">
           <TabsList className="grid w-full grid-cols-3">
             {/* <TabsTrigger value="overview">Overview</TabsTrigger> */}

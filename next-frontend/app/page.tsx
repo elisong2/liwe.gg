@@ -153,17 +153,22 @@ export default function Home() {
         League stats you didn't know about yourself!
       </p>
       <br />
-      <p className="text-center pt-5 font-italic">
+      {/* <p className="text-center pt-5 font-italic">
         *API currently does not track Mayhem games
-      </p>
-      <p className="text-center font-italic">
+      </p> */}
+      {/* <p className="text-center font-italic">
         *Currently undergoing major UI changes and feature additions. Come back
         soon!
-      </p>
+      </p> */}
 
       <div className="mt-15 justify-center items-center flex flex-col ">
         <Searchbar onSearch={handleSearch}></Searchbar>
       </div>
+
+      <p className="text-center text-sm mt-5 absolute w-full">
+        ⚠️Currently undergoing major UI changes and feature additions. Come back
+        soon!
+      </p>
 
       <p className="text-center text-sm bottom-10 absolute w-full">
         made with FastAPI + Next.js
