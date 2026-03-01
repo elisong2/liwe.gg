@@ -37,7 +37,7 @@ import { Button } from "@/components/ui/button";
 export default function PlayerPage() {
   const router = useRouter();
   const handleSearch = (query: string) => {
-    // user enters `Eli#NA1`
+    // user enters `OPMAGEMASTER#NA1`
     const [ign, tag] = query.split("#");
 
     if (!tag) {
@@ -71,13 +71,17 @@ export default function PlayerPage() {
         console.log("Backend JSON:", json);
         // console.log("Summoners: ", json.summs);
         // console.log("sum 1: ", json.summs[0]);
-        console.log("ovearll: ", json.overall_agg);
+        // console.log("overall: ", json.overall_agg);
         // console.log("ovearll: ", json.overall_agg[0]);
         // console.log("name: ", json.summs[0].Spell);
 
         // console.log("bruh ", data.summs);
         setData(json);
-
+        const overallStats = json?.overall_agg?.[0];
+        if (!overallStats) {
+          setReshapeData([]);
+          return;
+        }
         const transformed = Object?.entries(json.overall_agg[0]).map(
           ([key, value]) => ({
             stat: key,
@@ -107,6 +111,7 @@ export default function PlayerPage() {
     } finally {
       setLoading(false);
     }
+    window.location.reload();
   };
   // console.log("HI THERE bro");
   // console.log("Fetched player data:", data);
