@@ -13,9 +13,7 @@ Frontend:
 
 Backend:
 
-- Python, FastAPI, Supabase/Postgres, Railway
-  Other:
-- Riot Games Developer API
+- Python, FastAPI, Supabase/Postgres, Riot Games Developer API, Railway
 
 Notes:
 
