@@ -34,4 +34,6 @@ Tradeoffs:
 
 Future improvements:
 
-- adding features to allow for accounts to be more easily compared to friends' list
+- user to user comparisons
+- UI design
+- improved data visualizations
