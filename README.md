@@ -5,7 +5,7 @@ Years ago, the game client used to give fun statistics such as number of spellca
 Demo:
 
 - visit liwegg.vercel.app
-- search 'OPMAGEMASTER#NA1' or your own account!
+- search 'OPMAGEMASTER#NA1'
 
 Frontend:
 
