@@ -1,3 +1,5 @@
+**_ UNDERGOING MAJOR OVERHAUL _**
+
 Hello! This is liwe.gg, a full stack League of Legends stats platform built using Riot Games' API.
 
 Years ago, the game client used to give fun statistics such as number of spellcasts, damage dealt, champs played, etc, at the end of each season. The goal is to not only bring that back, but also on a service that can be checked throughout the year. This is an ongoing project, so more features are to come!
