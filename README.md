@@ -1,5 +1,5 @@
 **_ UNDERGOING MAJOR OVERHAUL _**
-**_ BACKEND REFACTOR IN PROGRESS _**
+**_ BACKEND REFACTOR IN PROGRESS, FRONTEND MAY BE DOWN_**
 
 Hello! This is liwe.gg, a full stack League of Legends stats platform built using Riot Games' API.
 
