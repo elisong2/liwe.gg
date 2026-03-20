@@ -113,6 +113,25 @@ class utils:
 
     def reformat_csv(file):
         return 0
+
+    def load_augments():
+        url = "https://raw.communitydragon.org/latest/cdragon/arena/en_us.json"
+        augment_data = requests.get(url).json()
+        # print(augment_data["augments"][0]["name"])
+
+        augment_map = {
+        int(augment["id"]): augment["name"]
+            for augment in augment_data["augments"]
+        }
+        # print("Augments loaded")
+        return augment_map
+    
+    def get_champ_role(champ):
+        url = "https://ddragon.leagueoflegends.com/cdn/16.6.1/data/en_US/champion.json"
+        champ_data = requests.get(url).json()
+        print(champ_data["data"][champ]["tags"][0])
+        return champ_data["data"][champ]["tags"][0]
+
 # should I use package file system
 # how to run individual functions in a file and give it inputs
 
