@@ -1,4 +1,5 @@
 import os
+from urllib import response
 
 import supabase
 from lib.utils import utils 
@@ -47,7 +48,92 @@ class SupaUser:
 
         utils.load_augments()
         
+    def data_view(self):
+        response_data = {}
         
+        profiles_response = (
+            self.supabase.table("profiles")
+            .select("*")
+            .eq("puuid", self.puuid)
+            .execute()
+        ).data
+
+        champs_overall_response = (
+            self.supabase.table("per_champ_overall")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+        
+        champs_sr_response = (
+            self.supabase.table("per_champ_sr")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data 
+        
+        champs_urf_response = (
+            self.supabase.table("per_champ_urf")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+
+        champs_arena_response = (
+            self.supabase.table("per_champ_arena")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+
+        arena_augments_response = (
+            self.supabase.table("arena_augments_selected")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+
+        roles_played_response = (
+            self.supabase.table("roles_played")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+
+        longest_sr_response = (
+            self.supabase.table("longest_sr_games")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+
+        shortest_sr_response = (
+            self.supabase.table("shortest_sr_games")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+
+        summs_response = (
+            self.supabase.table("summs_total")
+            .select("*")
+            .eq("profile_puuid", self.puuid)
+            .execute()
+        ).data
+
+        response_data["prof"] = profiles_response
+        response_data["champs_overall"] = champs_overall_response
+        response_data["champs_sr"] = champs_sr_response
+        response_data["champs_urf"] = champs_urf_response
+        response_data["champs_arena"] = champs_arena_response
+        response_data["arena_augments"] = arena_augments_response
+        response_data["roles_played"] = roles_played_response
+        response_data["longest_sr"] = longest_sr_response
+        response_data["shortest_sr"] = shortest_sr_response
+        response_data["summs"] = summs_response
+
+        return response_data         
+
     def data_update(self):
         match_list = []
         recent_flag = False
