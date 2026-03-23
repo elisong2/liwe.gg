@@ -144,7 +144,7 @@ export default function PlayerPage() {
           {/* Profile info */}
           {data.prof?.[0] && (
             <div className="mb-5 pb-4">
-              <h2 className="text-xl font-bold">{data.prof[0].Summoner}</h2>
+              <h2 className="text-xl font-bold">{data.prof[0].summoner}</h2>
               {/* <p>Games Played: {data.prof[0]["Games Played"]}</p> */}
             </div>
           )}
@@ -179,20 +179,36 @@ export default function PlayerPage() {
         <Tabs defaultValue="overall" className="w-[400px]">
           <TabsList className="grid w-full grid-cols-3">
             {/* <TabsTrigger value="overview">Overview</TabsTrigger> */}
-            <TabsTrigger value="overall">Overall</TabsTrigger>
-            <TabsTrigger value="champs">Champs</TabsTrigger>
+            {/* <TabsTrigger value="overall">Overall</TabsTrigger> */}
+            <TabsTrigger value="champs_overall">Champs Overall</TabsTrigger>
+            <TabsTrigger value="champs_sr">Champs SR</TabsTrigger>
             <TabsTrigger value="summs">Summs</TabsTrigger>
           </TabsList>
-          <TabsContent value="overview">
+          <TabsContent value="champs_overall">
             <Card>
               <CardHeader>
-                <CardTitle>Overview</CardTitle>
-                <CardDescription>
-                  Currently redoing the UI. Updates coming!
-                </CardDescription>
+                <CardTitle></CardTitle>
+                <CardDescription></CardDescription>
               </CardHeader>
               <CardContent className="text-muted-foreground text-sm">
-                placeholder
+                <DataTable
+                  columns={champsColumns}
+                  data={data.champs_overall as Champs[]}
+                />
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="champs_sr">
+            <Card>
+              <CardHeader>
+                <CardTitle></CardTitle>
+                <CardDescription></CardDescription>
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-sm">
+                <DataTable
+                  columns={champsColumns}
+                  data={data.champs_sr as Champs[]}
+                />
               </CardContent>
             </Card>
           </TabsContent>
@@ -206,36 +222,6 @@ export default function PlayerPage() {
                 <DataTable
                   columns={summsColumns}
                   data={data.summs as Summs[]}
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="champs">
-            <Card>
-              <CardHeader>
-                <CardTitle></CardTitle>
-                <CardDescription></CardDescription>
-              </CardHeader>
-              <CardContent className="text-muted-foreground text-sm">
-                <DataTable
-                  columns={champsColumns}
-                  data={data.champ_agg as Champs[]}
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="overall">
-            <Card>
-              <CardHeader>
-                <CardTitle></CardTitle>
-                <CardDescription></CardDescription>
-              </CardHeader>
-              <CardContent className="text-muted-foreground text-sm">
-                <DataTable
-                  columns={overallColumns}
-                  data={reshapeData as Overall[]}
                 />
               </CardContent>
             </Card>

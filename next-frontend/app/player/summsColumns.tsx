@@ -3,17 +3,17 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 export type Summs = {
-  Spell: string;
-  Count: number;
+  spell: string;
+  casts: number;
 };
 
 export const summsColumns: ColumnDef<Summs>[] = [
   {
-    accessorKey: "Spell",
+    accessorKey: "spell",
     header: "Spell",
   },
   {
-    accessorKey: "Uses",
-    header: "Count",
+    accessorKey: "casts",
+    header: "Casts",
   },
 ];

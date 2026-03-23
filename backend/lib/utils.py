@@ -132,6 +132,17 @@ class utils:
         print(champ_data["data"][champ]["tags"][0])
         return champ_data["data"][champ]["tags"][0]
 
+    
+    def get_champ_names():
+        url = "https://ddragon.leagueoflegends.com/cdn/16.6.1/data/en_US/champion.json"
+        champ_data = requests.get(url).json()
+        
+        formatted_names = {}
+        for champ, values in champ_data["data"].items():
+            formatted_names[champ] = values["name"]
+            
+        return formatted_names
+
 # should I use package file system
 # how to run individual functions in a file and give it inputs
 

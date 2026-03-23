@@ -37,6 +37,8 @@ class SupaUser:
              },
              on_conflict="puuid"
             ).execute()
+        
+        # add logic for summ name change
 
         print("response:", response)
         print(f"Welcome {self.summoner}!")
@@ -135,6 +137,7 @@ class SupaUser:
         return response_data         
 
     def data_update(self):
+        formatted_champ_names = utils.get_champ_names()
         match_list = []
         recent_flag = False
         counter = 0
@@ -190,7 +193,7 @@ class SupaUser:
                     match_list.append(matches[i])
                     
                     my_game_data = utils.get_player_data(curr_match, self.puuid)
-                    stuff = self.format_game_data(my_game_data)
+                    stuff = self.format_game_data(my_game_data, formatted_champ_names)
                     # print(my_game_data)
                     # return
 
@@ -457,10 +460,12 @@ class SupaUser:
         print("Summs updated for " + self.summoner)
 
     
-    def format_game_data(self, my_game_data):
+    def format_game_data(self, my_game_data, formatted_champ_names):
+        
         stuff = {}
-    
-        stuff["champion"] = my_game_data["championName"]
+
+        stuff["champion"] = formatted_champ_names[my_game_data["championName"]]
+
         stuff["win"] = 1 if my_game_data["win"] else 0
         stuff["loss"] = 0 if my_game_data["win"] else 1
         stuff["q"] = int(my_game_data["spell1Casts"])
