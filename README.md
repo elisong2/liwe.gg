@@ -7,6 +7,9 @@ Demo:
 - visit liwegg.vercel.app
 - search 'OPMAGEMASTER#NA1' (or your own name!)
 
+<img width="2495" height="1301" alt="Screenshot 2026-03-25 060424" src="https://github.com/user-attachments/assets/ce9a1d7c-0c3a-40fd-b298-1031b6cf4b84" />
+<img width="2501" height="1302" alt="Screenshot 2026-03-25 060739" src="https://github.com/user-attachments/assets/cc5a16c2-c8af-4551-903b-c7853dd8f603" />
+
 Frontend:
 
 - Typescript, Next.js, React, Tailwind, Vercel
