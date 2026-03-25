@@ -108,7 +108,7 @@ export default function PlayerPage() {
     <>
       <h1 className="mt-25 mb-5 text-center text-6xl p-5">
         <Link href="/" target="_self" className="border-5 rounded-3xl p-4">
-          liwe.gg
+          liwe<span className="text-red-500">.</span>gg
         </Link>
       </h1>
       {/* <p className="text-center pt-5 font-italic">
@@ -142,7 +142,7 @@ export default function PlayerPage() {
           variant="outline"
           onClick={handleUpdate}
           disabled={loading}
-          className="px-2 py-2 mt-5"
+          className="px-2 py-2 mt-5 cursor-pointer"
         >
           {loading ? "Updating..." : "Update"}
         </Button>

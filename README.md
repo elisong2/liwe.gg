@@ -1,14 +1,11 @@
-**_ UNDERGOING MAJOR OVERHAUL _**
-**_ BACKEND REFACTOR IN PROGRESS, FRONTEND MAY BE DOWN_**
+Hello! This is liwe.gg, a full stack League of Legends stats platform built using Riot Games' IP.
 
-Hello! This is liwe.gg, a full stack League of Legends stats platform built using Riot Games' API.
-
-Years ago, the game client used to give fun statistics such as number of spellcasts, damage dealt, champs played, etc, at the end of each season. The goal is to not only bring that back, but also on a service that can be checked throughout the year. This is an ongoing project, so more features are to come!
+Years ago, the game client would give fun statistics such as number of spellcasts, damage dealt, champs played, etc, at the end of each season. The goal is to not only bring that back, but also on a service that can be checked throughout the year. This is an ongoing project, so more features are to come!
 
 Demo:
 
 - visit liwegg.vercel.app
-- search 'OPMAGEMASTER#NA1'
+- search 'OPMAGEMASTER#NA1' (or your own name!)
 
 Frontend:
 
@@ -21,6 +18,8 @@ Backend:
 Notes:
 
 - Initially used local file storage for simplicity but migrated to Supabase for scalability on deployment
+- backend/frontend redo is now complete
+- added music!
 
 Limitations:
 
@@ -36,9 +35,8 @@ Tradeoffs:
 Future improvements:
 
 - user to user comparisons
-- UI design
+- UI design -> styling is inconsistent across browsers
 - improved data visualizations
 - top 5 best and worst winrates by champ
 - top stats for any given champ in a single game
-- win rate and kda by role
 - overall kda
