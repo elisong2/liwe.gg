@@ -199,7 +199,7 @@ def newDecodeMatch(matchid):
 
 def supatest():
     fart = SupaUser("mingoose9", "#NA1")
-    # fart.data_update()
+    fart.data_update()
     fart.data_view()
 
 def augment_test():
@@ -239,4 +239,4 @@ def convert_seconds_to_minutes(seconds):
         remaining_seconds = f"0{remaining_seconds}"
     print(f"{minutes}:{remaining_seconds}")
 
-convert_seconds_to_minutes(2348)
+supatest()

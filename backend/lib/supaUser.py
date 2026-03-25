@@ -213,7 +213,7 @@ class SupaUser:
 
                     self.supabase.rpc("update_roles_played", {
                         "p_profile_puuid": self.puuid,
-                        "p_role": utils.get_champ_role(stuff["champion"]),
+                        "p_role": utils.get_champ_role(my_game_data["championName"]),
                         "p_wins": stuff["win"],
                         "p_losses": stuff["loss"]
                     }).execute()
