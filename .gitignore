@@ -1,6 +1,6 @@
-backend/__pycache__/
+backend/lib/__pycache__/
 backend/lib/tempCodeRunnerFile.py
-backend/lib/testbench.py
+backend/testbench.py
 backend/lib/liwe.py
 # backend/lib/user_data/
 backend/.env

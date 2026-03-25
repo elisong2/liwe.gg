@@ -4,6 +4,7 @@ from pydantic import BaseModel
 # from lib.liwe import liwe
 
 from lib.user import user
+from lib.supaUser import SupaUser
 from typing import List, Dict
 import traceback
 
@@ -26,11 +27,17 @@ app.add_middleware(
 )
 
 class StatsResponse(BaseModel):
-    prof:          List[Dict]
-    champ_agg:     List[Dict]
-    summs:         List[Dict]
-    match_history: List[Dict]
-    overall_agg:   List[Dict]
+    prof:               List[Dict]
+    champs_overall:     List[Dict]
+    champs_sr:          List[Dict]
+    champs_urf:         List[Dict]
+    champs_arena:       List[Dict]
+    arena_augments:     List[Dict]
+    roles_played:       List[Dict]
+    longest_sr:         List[Dict]
+    shortest_sr:        List[Dict]
+    summs:              List[Dict]
+    
 
 @app.get("/")  
 def root():
@@ -40,21 +47,20 @@ def root():
 @app.get("/player/{ign}-{tag}", response_model=StatsResponse)
 def view(ign: str, tag: str) :
     try:
-        me = user(ign, "#"+tag)
-        prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
-
-        prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
-
+        me = SupaUser(ign, "#"+tag)
+        yee = me.data_view()
+        
         return {
-            'prof': prof_df.to_dict(orient="records"),
-            'champ_agg': champ_df.to_dict(orient="records"),
-            'summs': ss_df.to_dict(orient="records"),
-            'match_history': gen_df.to_dict(orient="records"),
-            'overall_agg': overall_df.to_dict(orient="records")
+            'prof': yee["prof"],
+            'champs_overall': yee["champs_overall"],
+            'champs_sr': yee["champs_sr"],
+            'champs_urf': yee["champs_urf"],
+            'champs_arena': yee["champs_arena"],
+            'arena_augments': yee["arena_augments"],
+            'roles_played': yee["roles_played"],
+            'longest_sr': yee["longest_sr"],
+            'shortest_sr': yee["shortest_sr"],
+            'summs': yee["summs"]
         }
 
     except Exception as e:
@@ -65,23 +71,22 @@ def view(ign: str, tag: str) :
 @app.post("/player/{ign}-{tag}", response_model=StatsResponse)
 def create(ign: str, tag: str):
     try:
-        me = user(ign, "#"+tag)
-        me.update()
-        prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
+        me = SupaUser(ign, "#"+tag)
+        me.data_update()
+        yee = me.data_view()
         
 
-        prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
-
         return {
-            'prof': prof_df.to_dict(orient="records"),
-            'champ_agg': champ_df.to_dict(orient="records"),
-            'summs': ss_df.to_dict(orient="records"),
-            'match_history': gen_df.to_dict(orient="records"),
-            'overall_agg': overall_df.to_dict(orient="records")
+            'prof': yee["prof"],
+            'champs_overall': yee["champs_overall"],
+            'champs_sr': yee["champs_sr"],
+            'champs_urf': yee["champs_urf"],
+            'champs_arena': yee["champs_arena"],
+            'arena_augments': yee["arena_augments"],
+            'roles_played': yee["roles_played"],
+            'longest_sr': yee["longest_sr"],
+            'shortest_sr': yee["shortest_sr"],
+            'summs': yee["summs"]
         }
 
     except Exception as e:
@@ -92,38 +97,29 @@ def create(ign: str, tag: str):
 @app.patch("/player/{ign}-{tag}", response_model=StatsResponse)
 def update(ign: str, tag: str):
     try:
-        me = user(ign, "#"+tag)
-        me.update()
-        prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
+        me = SupaUser(ign, "#"+tag)
+        me.data_update()
+        yee = me.data_view()
         
 
-        prof_df = prof_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        champ_df = champ_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        ss_df = ss_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        gen_df = gen_df.drop(columns=["Unnamed: 0"], errors="ignore")
-        overall_df = overall_df.drop(columns=["Unnamed: 0"], errors="ignore")
-
         return {
-            'prof': prof_df.to_dict(orient="records"),
-            'champ_agg': champ_df.to_dict(orient="records"),
-            'summs': ss_df.to_dict(orient="records"),
-            'match_history': gen_df.to_dict(orient="records"),
-            'overall_agg': overall_df.to_dict(orient="records")
+            'prof': yee["prof"],
+            'champs_overall': yee["champs_overall"],
+            'champs_sr': yee["champs_sr"],
+            'champs_urf': yee["champs_urf"],
+            'champs_arena': yee["champs_arena"],
+            'arena_augments': yee["arena_augments"],
+            'roles_played': yee["roles_played"],
+            'longest_sr': yee["longest_sr"],
+            'shortest_sr': yee["shortest_sr"],
+            'summs': yee["summs"]
         }
 
     except Exception as e:
         print(traceback.format_exc())  # log error server-side
         raise HTTPException(status_code=500, detail=str(e))
     
-# def build_response(me):
-#     prof_df, champ_df, ss_df, gen_df, overall_df = me.get_dataframes()
-#     return {
-#             'prof': prof_df.to_dict(orient="records"),
-#             'champ_agg': champ_df.to_dict(orient="records"),
-#             'summs': ss_df.to_dict(orient="records"),
-#             'match_history': gen_df.to_dict(orient="records"),
-#             'overall_agg': overall_df.to_dict(orient="records")
-#         }
+
 
 
 '''
