@@ -18,8 +18,9 @@ class SupaUser:
 
         temp = utils.get_puuid(self.ign, self.tag[1:], API_KEY, region="americas")
         if temp[0] == "ERROR":
-                print(temp)
+                # print(temp)
                 print("Try again later!")
+                raise Exception(f"PUUID lookup failed: {temp}")
                 return 
         else:
             self.puuid = temp

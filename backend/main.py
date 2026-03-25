@@ -65,7 +65,8 @@ def view(ign: str, tag: str) :
 
     except Exception as e:
         print(traceback.format_exc())  # log error server-side
-        raise HTTPException(status_code=500, detail=str(e))
+        # raise HTTPException(status_code=500, detail=str(e))
+        return {"error": str(e), "trace": traceback.format_exc()} 
 
 # # new player
 @app.post("/player/{ign}-{tag}", response_model=StatsResponse)
