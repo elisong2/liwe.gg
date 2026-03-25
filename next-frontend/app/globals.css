@@ -164,5 +164,10 @@
 
 body {
   font-family: var(--font-dotgothic16), sans-serif;
+  -webkit-font-smoothing: none;        /* Chrome/Safari */
+  -moz-osx-font-smoothing: unset;      /* Firefox on Mac */
+  font-smooth: never;                  /* general */
+  image-rendering: pixelated;
+  text-rendering: optimizeSpeed;
   letter-spacing: 0.075em;
 }
