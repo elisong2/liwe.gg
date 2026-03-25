@@ -19,6 +19,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000" ,       # local dev frontend origin
         "https://liwegg.vercel.app" ,    # deployed frontend origin
+        "https://liwegg.lol",           # new deployed frontend origin
         "https://liwegg-production.up.railway.app"
     ], 
     allow_credentials=True,
