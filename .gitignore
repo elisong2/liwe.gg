@@ -1,4 +1,4 @@
-backend/__pycache__/
+backend/lib/__pycache__/
 backend/lib/tempCodeRunnerFile.py
 backend/testbench.py
 backend/lib/liwe.py
