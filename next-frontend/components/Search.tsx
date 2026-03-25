@@ -50,7 +50,7 @@ export function Searchbar({ onSearch }: SearchProps) {
   // ⑦ What this component shows when rendered
   return (
     <>
-      <Field className="max-w-sm">
+      <Field className="w-86">
         <InputGroup>
           <InputGroupInput
             type="text"
