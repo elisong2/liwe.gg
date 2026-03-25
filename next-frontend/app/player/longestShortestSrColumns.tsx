@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 
 export type Longestshortestsr = {
   champion: string;
-  gameduration: number;
+  gameduration: string;
   kills: number;
   deaths: number;
   assists: number;
@@ -17,7 +17,13 @@ export const longestShortestSrColumns: ColumnDef<Longestshortestsr>[] = [
   },
   {
     accessorKey: "gameduration",
-    header: "Game Duration",
+    header: "Duration",
+    cell: ({ getValue }) => {
+      const totalSeconds = getValue() as number;
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    },
   },
   {
     accessorKey: "kills",

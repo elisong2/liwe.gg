@@ -18,7 +18,7 @@ export type Champs = {
   quadra_kills: number;
   pentakills: number;
   largest_killing_spree: number;
-  longesttimespentliving: number;
+  longesttimespentliving: string;
   firstbloodkill: number;
   firsttowerkill: number;
   gold_earned: number;
@@ -102,6 +102,12 @@ export const champsColumns: ColumnDef<Champs>[] = [
   {
     accessorKey: "longesttimespentliving",
     header: "Longest Time Spent Living",
+    cell: ({ getValue }) => {
+      const totalSeconds = getValue() as number;
+      const minutes = Math.floor(totalSeconds / 60);
+      const seconds = totalSeconds % 60;
+      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    },
   },
   {
     accessorKey: "firstbloodkill",
@@ -120,7 +126,7 @@ export const champsColumns: ColumnDef<Champs>[] = [
     header: "CS",
   },
   {
-    accessorKey: "total_damage_dealt_to_champions",
+    accessorKey: "total_damage_dealt_to_champs",
     header: "Total Damage Dealt to Champions",
   },
   {

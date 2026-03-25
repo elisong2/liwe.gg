@@ -38,7 +38,13 @@ class SupaUser:
              on_conflict="puuid"
             ).execute()
         
-        # add logic for summ name change
+        # logic for summ name change
+        if response.data[0]["summoner"] != self.summoner:
+            response = self.supabase.table("profiles").update(
+                {
+                    "summoner": self.summoner
+                }
+            ).eq("puuid", self.puuid).execute()
 
         print("response:", response)
         print(f"Welcome {self.summoner}!")
@@ -64,6 +70,7 @@ class SupaUser:
             self.supabase.table("per_champ_overall")
             .select("*")
             .eq("profile_puuid", self.puuid)
+            .order("champion", desc=False)
             .execute()
         ).data
         
@@ -71,6 +78,7 @@ class SupaUser:
             self.supabase.table("per_champ_sr")
             .select("*")
             .eq("profile_puuid", self.puuid)
+            .order("champion", desc=False)
             .execute()
         ).data 
         
@@ -78,6 +86,7 @@ class SupaUser:
             self.supabase.table("per_champ_urf")
             .select("*")
             .eq("profile_puuid", self.puuid)
+            .order("champion", desc=False)
             .execute()
         ).data
 
@@ -85,6 +94,7 @@ class SupaUser:
             self.supabase.table("per_champ_arena")
             .select("*")
             .eq("profile_puuid", self.puuid)
+            .order("champion", desc=False)
             .execute()
         ).data
 

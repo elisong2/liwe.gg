@@ -143,6 +143,5 @@ class utils:
             
         return formatted_names
 
-# should I use package file system
-# how to run individual functions in a file and give it inputs
+
 

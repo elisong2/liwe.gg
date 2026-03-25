@@ -4,33 +4,13 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import Navbar from "@/components/Navbar";
+
 import { Searchbar } from "@/components/Search";
+import { PlayerStats, StatsResponse } from "@/components/PlayerStats";
 import { useRouter } from "next/navigation";
-import { DataTable } from "@/components/data-table";
-import { summsColumns, Summs } from "../summsColumns";
-import { overallColumns, Overall } from "../overallColumns";
-import { champsColumns, Champs } from "../champColumns";
+
 import Link from "next/dist/client/link";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 
 //
@@ -120,7 +100,7 @@ export default function PlayerPage() {
   // only conditional logic here — after hooks are declared
   if (!data)
     return (
-      <div className="grid min-h-screen place-items-center">Loading...</div>
+      <div className="grid min-h-screen place-items-center">loading...</div>
     );
   // console.log("Fetched player data:", data);
 
@@ -168,70 +148,16 @@ export default function PlayerPage() {
         </Button>
       </div>
 
-      <p className="text-center text-sm font-italic">
-        ⚠️For first time/infrequent visitors, 'Update' may take some time
-      </p>
-      <p className="text-center text-sm pt-0 font-italic">
-        ⚠️Mayhem is currently untracked
-      </p>
+      {data.champs_overall?.length > 0 && <PlayerStats data={data} />}
 
-      <div className="justify-center items-center flex mt-5">
-        <Tabs defaultValue="overall" className="w-[400px]">
-          <TabsList className="grid w-full grid-cols-3">
-            {/* <TabsTrigger value="overview">Overview</TabsTrigger> */}
-            {/* <TabsTrigger value="overall">Overall</TabsTrigger> */}
-            <TabsTrigger value="champs_overall">Champs Overall</TabsTrigger>
-            <TabsTrigger value="champs_sr">Champs SR</TabsTrigger>
-            <TabsTrigger value="summs">Summs</TabsTrigger>
-          </TabsList>
-          <TabsContent value="champs_overall">
-            <Card>
-              <CardHeader>
-                <CardTitle></CardTitle>
-                <CardDescription></CardDescription>
-              </CardHeader>
-              <CardContent className="text-muted-foreground text-sm">
-                <DataTable
-                  columns={champsColumns}
-                  data={data.champs_overall as Champs[]}
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="champs_sr">
-            <Card>
-              <CardHeader>
-                <CardTitle></CardTitle>
-                <CardDescription></CardDescription>
-              </CardHeader>
-              <CardContent className="text-muted-foreground text-sm">
-                <DataTable
-                  columns={champsColumns}
-                  data={data.champs_sr as Champs[]}
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="summs">
-            <Card>
-              <CardHeader>
-                <CardTitle></CardTitle>
-                <CardDescription></CardDescription>
-              </CardHeader>
-              <CardContent className="text-muted-foreground text-sm">
-                <DataTable
-                  columns={summsColumns}
-                  data={data.summs as Summs[]}
-                />
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+      <div className="mt-24 pb-10">
+        <p className="text-center text-sm font-italic">
+          For first time/infrequent visitors, 'Update' may take some time
+        </p>
+        <p className="text-center text-sm pt-1 font-italic">
+          Mayhem is currently untracked
+        </p>
       </div>
-
-      {/* <p className="text-center text-sm bottom-10 absolute w-full">
-        made with FastAPI + Next.js
-      </p> */}
     </>
   );
 }
