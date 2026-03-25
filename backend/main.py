@@ -44,7 +44,7 @@ def root():
     return {"Thanks for using liwe.gg!"}
 
 # view
-@app.get("/player/{ign}-{tag}", response_model=StatsResponse)
+@app.get("/player/{ign}-{tag}")
 def view(ign: str, tag: str) :
     try:
         me = SupaUser(ign, "#"+tag)
