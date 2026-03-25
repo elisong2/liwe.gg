@@ -35,7 +35,7 @@ Tradeoffs:
 Future improvements:
 
 - user to user comparisons
-- UI design -> styling is inconsistent across browsers
+- UI design
 - improved data visualizations
 - top 5 best and worst winrates by champ
 - top stats for any given champ in a single game
