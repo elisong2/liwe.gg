@@ -69,7 +69,7 @@ export function PlayerStats({ data }: Props) {
               <CardHeader>
                 <CardTitle className="text-center">Summoner Spells</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <DataTable
                   columns={summsColumns}
                   data={data.summs as Summs[]}
@@ -82,7 +82,7 @@ export function PlayerStats({ data }: Props) {
               <CardHeader>
                 <CardTitle className="text-center">Augments Selected</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <DataTable
                   columns={augmentsColumns}
                   data={data.arena_augments as Augments[]}
@@ -99,11 +99,11 @@ export function PlayerStats({ data }: Props) {
             <TabsTrigger value="champs_arena">Champs Arena</TabsTrigger>
           </TabsList>
           <TabsContent value="champs_overall">
-            <Card className="h-[500px] flex flex-col">
+            <Card className="h-[500px] flex flex-col overflow-y-auto custom-scrollbar">
               <CardHeader>
                 <CardTitle className="text-center">Champions Overall</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <DataTable
                   columns={champsColumns}
                   data={data.champs_overall as Champs[]}
@@ -118,7 +118,7 @@ export function PlayerStats({ data }: Props) {
                   Champions Summoner's Rift
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <DataTable
                   columns={champsColumns}
                   data={data.champs_sr as Champs[]}
@@ -131,7 +131,7 @@ export function PlayerStats({ data }: Props) {
               <CardHeader>
                 <CardTitle className="text-center">Champions Arena</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <DataTable
                   columns={champsArenaColumns}
                   data={data.champs_arena as Champs_Arena[]}
@@ -155,7 +155,7 @@ export function PlayerStats({ data }: Props) {
               <CardHeader>
                 <CardTitle className="text-center">Roles Played</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <DataTable
                   columns={rolesPlayedColumns}
                   data={data.roles_played as RolesPlayed[]}
@@ -170,7 +170,7 @@ export function PlayerStats({ data }: Props) {
                   Shortest + Longest SR Game
                 </CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <div className="mt-12">
                   <DataTable
                     columns={longestShortestSrColumns}
@@ -192,7 +192,7 @@ export function PlayerStats({ data }: Props) {
               <CardHeader>
                 <CardTitle className="text-center">Shortest SR Games</CardTitle>
               </CardHeader>
-              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto">
+              <CardContent className="text-muted-foreground text-sm flex-1 overflow-y-auto custom-scrollbar">
                 <DataTable
                   columns={longestShortestSrColumns}
                   data={data.shortest_sr as Longestshortestsr[]}
