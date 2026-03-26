@@ -1,10 +1,12 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -42,32 +44,42 @@ export default function MusicPlayer() {
     <>
       <audio ref={audioRef} src="/music/lightsout.mp3" loop />
 
-      <div className="fixed bottom-8 right-8 px-4 py-2 flex items-center gap-3 bg-white/5 border border-white/10 backdrop-blur-md rounded-md  text-white/30">
+      <div className="fixed bottom-8 right-8 px-4 py-2 flex items-center gap-3 bg-foreground/5 border border-foreground/10 backdrop-blur-md rounded-md  text-foreground/30">
         <button
           onClick={togglePlay}
-          className="cursor-pointer text-sm leading-none hover:text-white transition-colors"
+          className="cursor-pointer text-sm leading-none hover:text-foreground transition-colors"
           suppressHydrationWarning
         >
           {playing ? "pause" : "play"}
         </button>
 
-        <div className="w-px h-3 bg-white/20" />
+        <div className="w-px h-3 bg-foreground/20" />
 
         <Link
           href="/"
-          className="text-sm leading-none hover:text-white transition-colors "
+          className="text-sm leading-none hover:text-foreground transition-colors "
         >
           home
         </Link>
 
-        <div className="w-px h-3 bg-white/20" />
+        <div className="w-px h-3 bg-foreground/20" />
 
         <Link
           href="/legal"
-          className="text-sm leading-none hover:text-white transition-colors "
+          className="text-sm leading-none hover:text-foreground transition-colors "
         >
           legal
         </Link>
+
+        <div className="w-px h-3 bg-foreground/20" />
+
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="cursor-pointer text-sm leading-none hover:text-foreground transition-colors"
+          suppressHydrationWarning
+        >
+          {theme === "dark" ? "light" : "dark"}
+        </button>
       </div>
     </>
   );
