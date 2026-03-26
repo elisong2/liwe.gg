@@ -27,33 +27,39 @@ class SupaUser:
 
         print(self.puuid)
         
-        response = self.supabase.table("profiles").upsert(
+        new_user_response = self.supabase.table("profiles").upsert(
             {
              "summoner": self.summoner,
              "puuid": temp,
-             "last_updated": s16_start,
+             "last_updated": s16_start_na,
              "total_games_played": 0,
              "arena_games_played": 0,
              "updated": False
              },
-             on_conflict="puuid"
-            ).execute()
+             on_conflict="puuid",
+             ignore_duplicates=True
+        ).execute()
+
         
-        # logic for summ name change
-        if response.data[0]["summoner"] != self.summoner:
-            response = self.supabase.table("profiles").update(
+        
+        profile_retrieve = self.supabase.table("profiles").select("*").eq("puuid", temp).execute()
+        
+        if profile_retrieve.data[0]["summoner"] != self.summoner:
+            update_summoner_name_response = self.supabase.table("profiles").update(
                 {
                     "summoner": self.summoner
                 }
-            ).eq("puuid", self.puuid).execute()
+            ).eq("puuid", self.puuid
+        ).execute()
+        
 
         print("response:", response)
         print(f"Welcome {self.summoner}!")
         print(self.puuid)
 
-        self.last_updated= int(response.data[0]["last_updated"])
-        self.total_games_played = int(response.data[0]["total_games_played"])
-        self.arena_games_played = int(response.data[0]["arena_games_played"])
+        self.last_updated= int(profile_retrieve.data[0]["last_updated"])
+        self.total_games_played = int(profile_retrieve.data[0]["total_games_played"])
+        self.arena_games_played = int(profile_retrieve.data[0]["arena_games_played"])
 
         utils.load_augments()
         
@@ -162,6 +168,8 @@ class SupaUser:
 
         while 1:
             matches = utils.get_match_ids_all_q_types(self.puuid, API_KEY, start_idx=start_idx, count=count)
+            print(matches)
+            
             if matches[0] == "ERROR":
                 print(matches)
                 print("Try again later!")
@@ -186,12 +194,11 @@ class SupaUser:
                     print(curr_match)
                     print("Try again later!")
                     return
-                time = int(curr_match["info"]["gameStartTimestamp"]) // 1000 #gameCreation is loading screen
+                time = int(curr_match["info"]["gameStartTimestamp"]) // 1000 # gameCreation is loading screen
                 version = int(curr_match["info"]["gameVersion"][:2])
                 # if time > last_updated: print("this is a recent game")
                 # print(version)
                 if time <= self.last_updated:
-                
                     break
                 elif time > self.last_updated and version == season_16:
                     counter += 1
@@ -199,6 +206,7 @@ class SupaUser:
                     if recent_flag == False:
                         last_updated_temp = time
                         recent_flag = True
+                        print("LAST UPDATED TEMP:", last_updated_temp)
                     # create sublist starting from oldest match that meets this requirement ^^^ and onward
 
                     match_list.append(matches[i])
@@ -251,15 +259,16 @@ class SupaUser:
                 counter = 0
             else: 
                 print("\nUpdate completed for " + self.summoner + "!")
-
-
-                self.supabase.table("profiles").update(
+                
+                update_result = self.supabase.table("profiles").update(
                     {
                     "last_updated": last_updated_temp, 
                     "total_games_played": self.total_games_played + total_counter,
                     "arena_games_played": self.arena_games_played + arena_game_counter,
                     }).eq("puuid", self.puuid).execute()
                 
+                print("puuid being used:", self.puuid)
+                print("update result:", update_result)
                 # self.supabase.table("match_ids").upsert(
                 #     {
                 #     "summoner": self.summoner,

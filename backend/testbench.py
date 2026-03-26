@@ -183,7 +183,7 @@ def decoding_match_data():
 
 
 def season16start():
-    start = datetime(2025, 1, 8, 0, 0, 0, tzinfo=ZoneInfo("America/Los_Angeles"))
+    start = datetime(2026, 1, 8, 12, 0, 0, tzinfo=ZoneInfo("America/Los_Angeles"))
     print(int(start.timestamp()))
 
 def bigdick():
@@ -200,7 +200,7 @@ def newDecodeMatch(matchid):
 def supatest():
     fart = SupaUser("mingoose9", "#NA1")
     fart.data_update()
-    fart.data_view()
+    # fart.data_view()
 
 def augment_test():
     url = "https://raw.communitydragon.org/latest/cdragon/arena/en_us.json"
