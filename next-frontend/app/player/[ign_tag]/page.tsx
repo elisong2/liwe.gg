@@ -21,7 +21,7 @@ export default function PlayerPage() {
     const [ign, tag] = query.split("#");
 
     if (!tag) {
-      alert("Please enter summoner as Name#Tag");
+      alert("Please enter as summoner#tag");
       return;
     }
 
@@ -35,43 +35,27 @@ export default function PlayerPage() {
   const [loading, setLoading] = useState(false);
   const { ign_tag } = useParams<{ ign_tag: string }>();
   const [data, setData] = useState<any | null>(null);
-  const [reshapeData, setReshapeData] = useState<any | null>(null);
 
   useEffect(() => {
     if (!ign_tag) return;
 
-    // fetch(`http://127.0.0.1:8000/player/${ign_tag}`)
-    // fetch(`https://liwegg-production.up.railway.app/player/${ign_tag}`)
     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/player/${ign_tag}`)
       .then((res) => {
-        if (!res.ok) throw new Error(`Backend error: ${res.status}`);
+        if (!res.ok) {
+          router.push(`/error`);
+          return;
+        }
         return res.json();
       })
       .then((json) => {
+        if (!json) return;
         console.log("Backend JSON:", json);
-        // console.log("Summoners: ", json.summs);
-        // console.log("sum 1: ", json.summs[0]);
-        // console.log("overall: ", json.overall_agg);
-        // console.log("ovearll: ", json.overall_agg[0]);
-        // console.log("name: ", json.summs[0].Spell);
-
-        // console.log("bruh ", data.summs);
         setData(json);
-        const overallStats = json?.overall_agg?.[0];
-        if (!overallStats) {
-          setReshapeData([]);
-          return;
-        }
-        const transformed = Object?.entries(json.overall_agg[0]).map(
-          ([key, value]) => ({
-            stat: key,
-            value: value,
-          }),
-        );
-        setReshapeData(transformed);
-        // console.log("reshaped: ", transformed);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        router.push(`/player/error`);
+      });
   }, [ign_tag]);
 
   const handleUpdate = async () => {
@@ -93,16 +77,11 @@ export default function PlayerPage() {
     }
     window.location.reload();
   };
-  // console.log("HI THERE bro");
-  // console.log("Fetched player data:", data);
-  // call hooks, even if data is not yet loaded
 
-  // only conditional logic here — after hooks are declared
   if (!data)
     return (
       <div className="grid min-h-screen place-items-center">loading...</div>
     );
-  // console.log("Fetched player data:", data);
 
   return (
     <>

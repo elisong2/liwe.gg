@@ -49,6 +49,7 @@ def root():
 def view(ign: str, tag: str) :
     try:
         me = SupaUser(ign, "#"+tag)
+        print("HEYO:", me)
         yee = me.data_view()
         
         return {

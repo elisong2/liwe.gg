@@ -12,7 +12,7 @@ export default function Home() {
     const [ign, tag] = query.split("#");
 
     if (!tag) {
-      alert("Please enter summoner as Name#Tag");
+      alert("Please enter as summoner#tag!");
       return;
     }
 

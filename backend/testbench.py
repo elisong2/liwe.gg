@@ -198,8 +198,8 @@ def newDecodeMatch(matchid):
 # newDecodeMatch('NA1_5433541005')
 
 def supatest():
-    fart = SupaUser("Aurorium", "#NA1")
-    fart.data_update()
+    fart = SupaUser("Balls", "#hydd")
+    # fart.data_update()
     # fart.data_view()
 
 def augment_test():
