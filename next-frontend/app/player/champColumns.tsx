@@ -38,10 +38,18 @@ export type Champs = {
   wardsplaced: number;
 };
 
+declare module "@tanstack/react-table" {
+  interface ColumnMeta<TData, TValue> {
+    sticky?: boolean;
+  }
+}
+
 export const champsColumns: ColumnDef<Champs>[] = [
   {
     accessorKey: "champion",
+    meta: { sticky: true },
     header: "Champion",
+    cell: ({ row }) => row.getValue("champion"),
   },
   {
     accessorKey: "wins",

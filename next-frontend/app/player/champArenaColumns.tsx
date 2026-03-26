@@ -25,10 +25,18 @@ export type Champs_Arena = {
   missing_pings: number;
 };
 
+declare module "@tanstack/react-table" {
+  interface ColumnMeta<TData, TValue> {
+    sticky?: boolean;
+  }
+}
+
 export const champsArenaColumns: ColumnDef<Champs_Arena>[] = [
   {
     accessorKey: "champion",
+    meta: { sticky: true },
     header: "Champion",
+    cell: ({ row }) => row.getValue("champion"),
   },
   {
     accessorKey: "wins",
