@@ -484,7 +484,10 @@ class SupaUser:
         
         stuff = {}
 
-        stuff["champion"] = formatted_champ_names[my_game_data["championName"]]
+        if my_game_data["championName"] == "FiddleSticks":
+             stuff["champion"] = "Fiddlesticks"
+        else:
+            stuff["champion"] = formatted_champ_names[my_game_data["championName"]]
 
         stuff["win"] = 1 if my_game_data["win"] else 0
         stuff["loss"] = 0 if my_game_data["win"] else 1

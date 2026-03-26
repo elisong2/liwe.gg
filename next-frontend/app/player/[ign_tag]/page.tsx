@@ -91,7 +91,7 @@ export default function PlayerPage() {
     } finally {
       setLoading(false);
     }
-    // window.location.reload();
+    window.location.reload();
   };
   // console.log("HI THERE bro");
   // console.log("Fetched player data:", data);

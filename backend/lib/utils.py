@@ -129,8 +129,12 @@ class utils:
     def get_champ_role(champ):
         url = "https://ddragon.leagueoflegends.com/cdn/16.6.1/data/en_US/champion.json"
         champ_data = requests.get(url).json()
-        print(champ_data["data"][champ]["tags"][0])
-        return champ_data["data"][champ]["tags"][0]
+        if champ == "FiddleSticks":
+            print(champ_data["data"]["Fiddlesticks"]["tags"][0])
+            return champ_data["data"]["Fiddlesticks"]["tags"][0]
+        else:
+            print(champ_data["data"][champ]["tags"][0])
+            return champ_data["data"][champ]["tags"][0]
 
     
     def get_champ_names():
