@@ -55,6 +55,16 @@ export default function MusicPlayer() {
 
         <div className="w-px h-3 bg-foreground/20" />
 
+        <button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          className="cursor-pointer text-sm leading-none hover:text-foreground transition-colors"
+          suppressHydrationWarning
+        >
+          {theme === "dark" ? "light" : "dark"}
+        </button>
+
+        <div className="w-px h-3 bg-foreground/20" />
+
         <Link
           href="/"
           className="text-sm leading-none hover:text-foreground transition-colors "
@@ -70,16 +80,6 @@ export default function MusicPlayer() {
         >
           legal
         </Link>
-
-        <div className="w-px h-3 bg-foreground/20" />
-
-        <button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="cursor-pointer text-sm leading-none hover:text-foreground transition-colors"
-          suppressHydrationWarning
-        >
-          {theme === "dark" ? "light" : "dark"}
-        </button>
       </div>
     </>
   );
