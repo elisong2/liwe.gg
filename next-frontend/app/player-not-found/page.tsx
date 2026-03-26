@@ -1,8 +1,8 @@
-export default function Error() {
+export default function PlayerNotFound() {
   return (
     <>
       <div className="grid min-h-screen place-items-center">
-        Summoner not found... Please try again!
+        Player not found... Please try again!
       </div>
     </>
   );

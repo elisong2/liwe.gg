@@ -54,7 +54,7 @@ export default function PlayerPage() {
       })
       .catch((err) => {
         console.error(err);
-        router.push(`/player/error`);
+        router.push(`/player-not-found`);
       });
   }, [ign_tag]);
 
