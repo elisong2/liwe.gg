@@ -2,10 +2,24 @@ Hello! This is liwe.gg, a full stack League of Legends stats platform built usin
 
 Years ago, the game client would give fun statistics such as number of spellcasts, damage dealt, champs played, etc, at the end of each season. The goal is to not only bring that back, but also on a service that can be checked throughout the year. This is an ongoing project, so more features are to come!
 
+Riot currently DOES NOT release Mayhem data, therefore the site cannot reflect those numbers. Should they ever do, liwe.gg will display your Mayhem stats ASAP.
+
 Demo:
 
 - visit liwegg.vercel.app
 - search 'OPMAGEMASTER#NA1' (or your own name!)
+
+Features:
+
+- Per champ breakdown game wide
+- Per champ breakdown on Summoner's Rift (only Norms, Ranked, and Ranked Flex)
+- Per champ breakdown on URF
+- Per champ breakdown on Arena
+- Summoner Spell usage game wide
+- Arena Augments usage
+- Winrate/Pickrate of roles game wide
+- Longest and shortest SR game
+- more to come!
 
 <img width="2495" height="1301" alt="Screenshot 2026-03-25 060424" src="https://github.com/user-attachments/assets/ce9a1d7c-0c3a-40fd-b298-1031b6cf4b84" />
 <img width="2501" height="1302" alt="Screenshot 2026-03-25 060739" src="https://github.com/user-attachments/assets/cc5a16c2-c8af-4551-903b-c7853dd8f603" />
