@@ -13,7 +13,6 @@ Features:
 
 - Per champ breakdown game wide
 - Per champ breakdown on Summoner's Rift (only Norms, Ranked, and Ranked Flex)
-- Per champ breakdown on URF
 - Per champ breakdown on Arena
 - Summoner Spell usage game wide
 - Arena Augments usage
