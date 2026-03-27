@@ -26,3 +26,11 @@ Tidied up backend: Removed unnamed row/column in dataframes, sorted champ list a
 Currently working on UI. 
 
 Environment issue with Supabase. Switching back to local storage for now.
+
+Finished backend refactor
+
+Finished frontend redo
+
+Added ambient music 
+
+Working on UI QOL changes
