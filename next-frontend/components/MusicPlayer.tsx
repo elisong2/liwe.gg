@@ -67,7 +67,7 @@ export default function MusicPlayer() {
 
         <Link
           href="/"
-          className="text-sm leading-none hover:text-foreground transition-colors "
+          className="text-sm leading-none hover:text-red-500 transition-colors "
         >
           home
         </Link>
