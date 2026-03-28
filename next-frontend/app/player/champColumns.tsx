@@ -88,6 +88,14 @@ export const champsColumns: ColumnDef<Champs>[] = [
     header: "Assists",
   },
   {
+    accessorKey: "gold_earned",
+    header: "Gold Earned",
+  },
+  {
+    accessorKey: "cs",
+    header: "CS",
+  },
+  {
     accessorKey: "double_kills",
     header: "Double Kills",
   },
@@ -103,34 +111,6 @@ export const champsColumns: ColumnDef<Champs>[] = [
     accessorKey: "pentakills",
     header: "Penta Kills",
   },
-
-  {
-    accessorKey: "cs",
-    header: "CS",
-  },
-
-  {
-    accessorKey: "gold_earned",
-    header: "Gold Earned",
-  },
-
-  {
-    accessorKey: "missing_pings",
-    header: "Missing Pings",
-  },
-  {
-    accessorKey: "visionscore",
-    header: "Vision Score",
-  },
-  {
-    accessorKey: "wardskilled",
-    header: "Wards Killed",
-  },
-  {
-    accessorKey: "wardsplaced",
-    header: "Wards Placed",
-  },
-
   {
     accessorKey: "largest_killing_spree",
     header: "Largest Killing Spree",
@@ -144,6 +124,26 @@ export const champsColumns: ColumnDef<Champs>[] = [
       const seconds = totalSeconds % 60;
       return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
     },
+  },
+  {
+    accessorKey: "missing_pings",
+    header: "Missing Pings",
+  },
+  {
+    accessorKey: "timeccingothers",
+    header: "Time CCing Others",
+  },
+  {
+    accessorKey: "visionscore",
+    header: "Vision Score",
+  },
+  {
+    accessorKey: "wardskilled",
+    header: "Wards Killed",
+  },
+  {
+    accessorKey: "wardsplaced",
+    header: "Wards Placed",
   },
   {
     accessorKey: "firstbloodkill",
@@ -174,10 +174,7 @@ export const champsColumns: ColumnDef<Champs>[] = [
     accessorKey: "total_heals_on_teammates",
     header: "Healing on Teammates",
   },
-  {
-    accessorKey: "timeccingothers",
-    header: "Time CCing Others",
-  },
+
   {
     accessorKey: "damagedealttobuildings",
     header: "Damage Dealt to Buildings",

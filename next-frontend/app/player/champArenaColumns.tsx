@@ -74,6 +74,10 @@ export const champsArenaColumns: ColumnDef<Champs_Arena>[] = [
     accessorKey: "assists",
     header: "Assists",
   },
+  {
+    accessorKey: "gold_earned",
+    header: "Gold Earned",
+  },
 
   {
     accessorKey: "largest_killing_spree",
@@ -91,8 +95,13 @@ export const champsArenaColumns: ColumnDef<Champs_Arena>[] = [
   },
 
   {
-    accessorKey: "gold_earned",
-    header: "Gold Earned",
+    accessorKey: "missing_pings",
+    header: "Missing Pings",
+  },
+
+  {
+    accessorKey: "timeccingothers",
+    header: "Time CCing Others",
   },
 
   {
@@ -114,14 +123,5 @@ export const champsArenaColumns: ColumnDef<Champs_Arena>[] = [
   {
     accessorKey: "total_heals_on_teammates",
     header: "Total Heals on Teammates",
-  },
-  {
-    accessorKey: "timeccingothers",
-    header: "Time CCing Others",
-  },
-
-  {
-    accessorKey: "missing_pings",
-    header: "Missing Pings",
   },
 ];
