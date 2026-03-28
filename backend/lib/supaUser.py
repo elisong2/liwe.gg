@@ -109,6 +109,7 @@ class SupaUser:
             self.supabase.table("arena_augments_selected")
             .select("*")
             .eq("profile_puuid", self.puuid)
+            .order("augment", desc=False)
             .execute()
         ).data
 
