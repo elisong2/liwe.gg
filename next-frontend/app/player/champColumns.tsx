@@ -103,6 +103,34 @@ export const champsColumns: ColumnDef<Champs>[] = [
     accessorKey: "pentakills",
     header: "Penta Kills",
   },
+
+  {
+    accessorKey: "cs",
+    header: "CS",
+  },
+
+  {
+    accessorKey: "gold_earned",
+    header: "Gold Earned",
+  },
+
+  {
+    accessorKey: "missing_pings",
+    header: "Missing Pings",
+  },
+  {
+    accessorKey: "visionscore",
+    header: "Vision Score",
+  },
+  {
+    accessorKey: "wardskilled",
+    header: "Wards Killed",
+  },
+  {
+    accessorKey: "wardsplaced",
+    header: "Wards Placed",
+  },
+
   {
     accessorKey: "largest_killing_spree",
     header: "Largest Killing Spree",
@@ -125,14 +153,7 @@ export const champsColumns: ColumnDef<Champs>[] = [
     accessorKey: "firsttowerkill",
     header: "First Towers",
   },
-  {
-    accessorKey: "gold_earned",
-    header: "Gold Earned",
-  },
-  {
-    accessorKey: "cs",
-    header: "CS",
-  },
+
   {
     accessorKey: "total_damage_dealt_to_champs",
     header: "Damage Dealt to Champions",
@@ -168,21 +189,5 @@ export const champsColumns: ColumnDef<Champs>[] = [
   {
     accessorKey: "damagedealttoturrets",
     header: "Damage Dealt to Turrets",
-  },
-  {
-    accessorKey: "missing_pings",
-    header: "Missing Pings",
-  },
-  {
-    accessorKey: "visionscore",
-    header: "Vision Score",
-  },
-  {
-    accessorKey: "wardskilled",
-    header: "Wards Killed",
-  },
-  {
-    accessorKey: "wardsplaced",
-    header: "Wards Placed",
   },
 ];
