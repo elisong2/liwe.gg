@@ -119,11 +119,11 @@ export const champsColumns: ColumnDef<Champs>[] = [
   },
   {
     accessorKey: "firstbloodkill",
-    header: "First Blood Kills",
+    header: "First Bloods",
   },
   {
     accessorKey: "firsttowerkill",
-    header: "First Tower Kills",
+    header: "First Towers",
   },
   {
     accessorKey: "gold_earned",
@@ -135,15 +135,15 @@ export const champsColumns: ColumnDef<Champs>[] = [
   },
   {
     accessorKey: "total_damage_dealt_to_champs",
-    header: "Total Damage Dealt to Champions",
+    header: "Damage Dealt to Champions",
   },
   {
     accessorKey: "total_damage_taken",
-    header: "Total Damage Taken",
+    header: "Damage Taken",
   },
   {
     accessorKey: "total_damage_shielded_on_teammates",
-    header: "Total Damage Shielded on Teammates",
+    header: "Damage Shielded on Teammates",
   },
   {
     accessorKey: "damage_self_mitigated",
@@ -151,14 +151,14 @@ export const champsColumns: ColumnDef<Champs>[] = [
   },
   {
     accessorKey: "total_heals_on_teammates",
-    header: "Total Heals on Teammates",
+    header: "Healing on Teammates",
   },
   {
     accessorKey: "timeccingothers",
     header: "Time CCing Others",
   },
   {
-    accessorKey: "damage_dealt_to_buildings",
+    accessorKey: "damagedealttobuildings",
     header: "Damage Dealt to Buildings",
   },
   {
