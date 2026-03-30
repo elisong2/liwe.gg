@@ -21,8 +21,9 @@ const dotGothic16 = DotGothic16({
 });
 
 export const metadata: Metadata = {
-  title: "liwe.gg",
-  description: "Learn more about your personal League stats!",
+  title: "liwe.gg - Your League of Legends Season 2026 Stats",
+  description:
+    "Learn more about your personal League stats aggregated throughout 2026!",
   openGraph: {
     title: "liwe.gg Home Page",
     description: "Your own League Stats!",
