@@ -8,6 +8,7 @@ Demo:
 
 - visit liwegg.vercel.app
 - search 'OPMAGEMASTER#NA1' (or your own name!)
+- design inspired by Nothing
 
 Features:
 
